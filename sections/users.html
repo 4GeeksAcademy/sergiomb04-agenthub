@@ -1,0 +1,30 @@
+<section id="users" class="space-y-6 pb-8">
+  <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+    <div>
+      <p class="text-xs uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Usuarios</p>
+      <h3 class="text-2xl font-semibold">Clientes registrados</h3>
+    </div>
+    <div class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+      <span class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2 dark:bg-slate-900">
+        <span class="material-symbols-outlined">info</span> Piloto en datos ficticios
+      </span>
+    </div>
+  </div>
+  <div class="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-panel dark:border-slate-800 dark:bg-slate-900">
+    <div class="overflow-x-auto">
+      <table class="min-w-full text-left text-sm">
+        <thead class="bg-slate-50 text-slate-500 dark:bg-slate-950/70 dark:text-slate-400">
+          <tr>
+            <th class="px-6 py-4">Nombre</th>
+            <th class="px-6 py-4">Email</th>
+            <th class="px-6 py-4">Plan</th>
+            <th class="px-6 py-4">Estado</th>
+            <th class="px-6 py-4">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="usersTable" class="divide-y divide-slate-200 dark:divide-slate-800"></tbody>
+      </table>
+    </div>
+    <div class="px-6 py-4 text-xs text-slate-500 dark:text-slate-400">Haz clic en "Ver detalle" para abrir la información completa de usuario.</div>
+  </div>
+</section>

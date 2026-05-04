@@ -52,6 +52,14 @@
       border-radius: 0 9999px 9999px 0;
       background: #4338ca;
     }
+    .dropdown-root > div {
+      overflow: hidden;
+      border-radius: 1rem;
+    }
+    .dropdown-root > button:focus-visible {
+      outline: 2px solid rgba(67, 56, 202, 0.35);
+      outline-offset: 3px;
+    }
     .backdrop-blur-panel {
       backdrop-filter: blur(12px);
     }
@@ -59,7 +67,7 @@
 </head>
 <body class="min-h-screen bg-surface text-strong antialiased transition-colors duration-300 dark:bg-[#0f172a] dark:text-slate-100">
   <div class="min-h-screen flex">
-    <aside class="hidden lg:flex flex-col w-72 h-screen border-r border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-[#020617]">
+    <aside class="hidden lg:flex flex-col fixed inset-y-0 left-0 w-72 border-r border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-[#020617] overflow-y-auto">
       <div class="p-6 flex items-center gap-3 border-b border-slate-200 dark:border-slate-800">
         <div class="w-11 h-11 rounded-2xl bg-brand text-white flex items-center justify-center shadow-sm">
           <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
@@ -101,7 +109,7 @@
         </div>
       </div>
     </aside>
-    <div class="flex-1">
+    <div class="flex-1 lg:pl-72">
       <header class="sticky top-0 z-30 flex items-center justify-between gap-4 px-5 py-4 border-b border-slate-200 bg-white/90 backdrop-blur-sm dark:border-slate-800 dark:bg-slate-950/90">
         <div class="flex items-center gap-3">
           <button id="menuToggle" class="lg:hidden p-2 rounded-2xl bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800">
@@ -123,181 +131,10 @@
           </button>
         </div>
       </header>
-      <main class="p-5 lg:p-8">
-        <section id="dashboard" class="space-y-6 pb-8">
-          <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p class="text-xs uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Resumen</p>
-              <h3 class="text-3xl font-semibold">Estado general</h3>
-              <p class="mt-2 max-w-2xl text-sm text-slate-600 dark:text-slate-300">Métricas principales de ingresos, actividad de agentes y calidad del servicio.</p>
-            </div>
-            <div class="rounded-3xl border border-slate-200 bg-white px-4 py-3 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-              <p class="text-xs uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Última actualización</p>
-              <p class="mt-1 text-sm font-semibold text-slate-900 dark:text-slate-100">Hace 12 minutos</p>
-            </div>
-          </div>
-          <div class="grid gap-4 md:grid-cols-3">
-            <article class="rounded-[1.25rem] border border-slate-200 bg-white p-6 shadow-panel transition hover:-translate-y-0.5 dark:border-slate-800 dark:bg-slate-900">
-              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Ingresos totales</p>
-              <p class="mt-5 text-4xl font-semibold text-strong dark:text-slate-100">€ 74.820</p>
-              <p class="mt-4 text-sm text-slate-600 dark:text-slate-300">Mes actual</p>
-              <div class="mt-6 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-2 text-sm text-emerald-700 dark:bg-emerald-900/15 dark:text-emerald-300">
-                <span class="material-symbols-outlined">trending_up</span> +14.2% vs mes anterior
-              </div>
-            </article>
-            <article class="rounded-[1.25rem] border border-slate-200 bg-white p-6 shadow-panel transition hover:-translate-y-0.5 dark:border-slate-800 dark:bg-slate-900">
-              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Pérdidas por cupones</p>
-              <p class="mt-5 text-4xl font-semibold text-strong dark:text-slate-100">€ 9.320</p>
-              <p class="mt-4 text-sm text-slate-600 dark:text-slate-300">Descuento aplicado</p>
-              <div class="mt-6 inline-flex items-center gap-2 rounded-full bg-rose-50 px-3 py-2 text-sm text-rose-700 dark:bg-rose-900/15 dark:text-rose-300">
-                <span class="material-symbols-outlined">inventory_2</span> 732 códigos usados
-              </div>
-            </article>
-            <article class="rounded-[1.25rem] border border-slate-200 bg-white p-6 shadow-panel transition hover:-translate-y-0.5 dark:border-slate-800 dark:bg-slate-900">
-              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Agentes</p>
-              <p class="mt-5 text-4xl font-semibold text-strong dark:text-slate-100">128 <span class="text-base font-medium text-slate-500 dark:text-slate-400">/ 8 fallando</span></p>
-              <p class="mt-4 text-sm text-slate-600 dark:text-slate-300">Procesos supervisados</p>
-              <div class="mt-6 grid gap-2 sm:grid-cols-2">
-                <span class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-700 dark:bg-emerald-900/15 dark:text-emerald-300">Activos 120</span>
-                <span class="inline-flex items-center rounded-full bg-rose-50 px-3 py-2 text-xs font-semibold text-rose-700 dark:bg-rose-900/15 dark:text-rose-300">Fallando 8</span>
-              </div>
-            </article>
-          </div>
-          <div class="rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-panel dark:border-slate-800 dark:bg-slate-900">
-            <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              <div>
-                <p class="text-sm uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Actividad semanal</p>
-                <h4 class="mt-1 text-xl font-semibold">Picos de mensajes y eventos</h4>
-              </div>
-              <span class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2 text-sm text-slate-700 dark:bg-slate-800 dark:text-slate-200">
-                <span class="material-symbols-outlined">insights</span> 8.4% más interacciones
-              </span>
-            </div>
-            <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              <div class="rounded-3xl bg-slate-50 p-4 dark:bg-slate-950/60">
-                <p class="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Lunes</p>
-                <div class="mt-4 h-24 rounded-3xl bg-gradient-to-b from-brand/15 to-transparent"></div>
-              </div>
-              <div class="rounded-3xl bg-slate-50 p-4 dark:bg-slate-950/60">
-                <p class="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Martes</p>
-                <div class="mt-4 h-32 rounded-3xl bg-gradient-to-b from-brand/30 to-transparent"></div>
-              </div>
-              <div class="rounded-3xl bg-slate-50 p-4 dark:bg-slate-950/60">
-                <p class="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Miércoles</p>
-                <div class="mt-4 h-20 rounded-3xl bg-gradient-to-b from-brand/20 to-transparent"></div>
-              </div>
-              <div class="rounded-3xl bg-slate-50 p-4 dark:bg-slate-950/60">
-                <p class="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Jueves</p>
-                <div class="mt-4 h-28 rounded-3xl bg-gradient-to-b from-brand/25 to-transparent"></div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section id="users" class="space-y-6 pb-8">
-          <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p class="text-xs uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Usuarios</p>
-              <h3 class="text-2xl font-semibold">Clientes registrados</h3>
-            </div>
-            <div class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
-              <span class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2 dark:bg-slate-900">
-                <span class="material-symbols-outlined">info</span> Piloto en datos ficticios
-              </span>
-            </div>
-          </div>
-          <div class="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-panel dark:border-slate-800 dark:bg-slate-900">
-            <div class="overflow-x-auto">
-              <table class="min-w-full text-left text-sm">
-                <thead class="bg-slate-50 text-slate-500 dark:bg-slate-950/70 dark:text-slate-400">
-                  <tr>
-                    <th class="px-6 py-4">Nombre</th>
-                    <th class="px-6 py-4">Email</th>
-                    <th class="px-6 py-4">Plan</th>
-                    <th class="px-6 py-4">Estado</th>
-                    <th class="px-6 py-4">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody id="usersTable" class="divide-y divide-slate-200 dark:divide-slate-800"></tbody>
-              </table>
-            </div>
-            <div class="px-6 py-4 text-xs text-slate-500 dark:text-slate-400">Haz clic en "Ver detalle" para abrir la información completa de usuario.</div>
-          </div>
-        </section>
-        <section id="agents" class="space-y-6 pb-8">
-          <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p class="text-xs uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Gestión de agentes</p>
-              <h3 class="text-2xl font-semibold">Flota de agentes</h3>
-            </div>
-            <p class="max-w-2xl text-sm text-slate-600 dark:text-slate-300">Monitorea el estado de cada agente y su paquete de skills.</p>
-          </div>
-          <div class="grid gap-4 lg:grid-cols-2">
-            <div id="agentsList" class="space-y-4"></div>
-          </div>
-        </section>
-        <section id="skills" class="space-y-6 pb-8">
-          <div class="rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-panel dark:border-slate-800 dark:bg-slate-900">
-            <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-              <div>
-                <p class="text-xs uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Catálogo</p>
-                <h3 class="text-2xl font-semibold">Skills disponibles</h3>
-              </div>
-              <div class="text-sm text-slate-600 dark:text-slate-300">Una skill es una capacidad especializada que un agente puede ejecutar dentro de AgentHub.</div>
-            </div>
-          </div>
-          <div class="grid gap-4 lg:grid-cols-3" id="skillsGrid"></div>
-        </section>
-        <section id="contracts" class="space-y-6 pb-8">
-          <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p class="text-xs uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Contrataciones</p>
-              <h3 class="text-2xl font-semibold">Acuerdos recientes</h3>
-            </div>
-            <p class="text-sm text-slate-600 dark:text-slate-300">Listados de contratos con fecha, skills contratadas y coste total.</p>
-          </div>
-          <div class="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-panel dark:border-slate-800 dark:bg-slate-900">
-            <div class="overflow-x-auto">
-              <table class="min-w-full text-left text-sm">
-                <thead class="bg-slate-50 text-slate-500 dark:bg-slate-950/70 dark:text-slate-400">
-                  <tr>
-                    <th class="px-6 py-4">Cliente</th>
-                    <th class="px-6 py-4">Agente</th>
-                    <th class="px-6 py-4">Skills</th>
-                    <th class="px-6 py-4">Fecha</th>
-                    <th class="px-6 py-4">Importe</th>
-                    <th class="px-6 py-4">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody id="contractsTable" class="divide-y divide-slate-200 dark:divide-slate-800"></tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-        <section id="errors" class="space-y-6 pb-8">
-          <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p class="text-xs uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Log</p>
-              <h3 class="text-2xl font-semibold">Errores del sistema</h3>
-            </div>
-            <p class="text-sm text-slate-600 dark:text-slate-300">Registros de eventos críticos y fallos de agentes.</p>
-          </div>
-          <div class="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-panel dark:border-slate-800 dark:bg-slate-900">
-            <div class="overflow-x-auto">
-              <table class="min-w-full text-left text-sm">
-                <thead class="bg-slate-50 text-slate-500 dark:bg-slate-950/70 dark:text-slate-400">
-                  <tr>
-                    <th class="px-6 py-4">Timestamp</th>
-                    <th class="px-6 py-4">Agente</th>
-                    <th class="px-6 py-4">Tipo</th>
-                    <th class="px-6 py-4">Descripción</th>
-                    <th class="px-6 py-4">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody id="errorsTable" class="divide-y divide-slate-200 dark:divide-slate-800"></tbody>
-              </table>
-            </div>
-          </div>
-        </section>
+      <main id="mainContent" class="p-5 lg:p-8">
+        <div class="rounded-[1.5rem] border border-slate-200 bg-white p-8 text-center shadow-panel dark:border-slate-800 dark:bg-slate-900">
+          <p class="text-sm text-slate-500 dark:text-slate-400">Cargando sección...</p>
+        </div>
       </main>
     </div>
   </div>
@@ -361,11 +198,11 @@
     };
 
     const dom = {
-      usersTable: document.getElementById('usersTable'),
-      agentsList: document.getElementById('agentsList'),
-      skillsGrid: document.getElementById('skillsGrid'),
-      contractsTable: document.getElementById('contractsTable'),
-      errorsTable: document.getElementById('errorsTable'),
+      usersTable: null,
+      agentsList: null,
+      skillsGrid: null,
+      contractsTable: null,
+      errorsTable: null,
       modalRoot: document.getElementById('modalRoot'),
       modalTitle: document.getElementById('modalTitle'),
       modalSubtitle: document.getElementById('modalSubtitle'),
@@ -378,9 +215,19 @@
       menuToggle: document.getElementById('menuToggle'),
     };
 
+    function refreshDomNodes() {
+      dom.usersTable = document.getElementById('usersTable');
+      dom.agentsList = document.getElementById('agentsList');
+      dom.skillsGrid = document.getElementById('skillsGrid');
+      dom.contractsTable = document.getElementById('contractsTable');
+      dom.errorsTable = document.getElementById('errorsTable');
+    }
+
+    const sectionIds = ['dashboard', 'users', 'agents', 'skills', 'contracts', 'errors'];
+
     function init() {
       loadTheme();
-      renderAll();
+      setActiveNav(getCurrentSection());
       window.addEventListener('click', handleGlobalClick);
       window.addEventListener('keydown', handleGlobalKeydown);
       dom.modalClose.addEventListener('click', closeModal);
@@ -391,6 +238,46 @@
       dom.menuToggle.addEventListener('click', () => {
         document.querySelector('aside').classList.toggle('hidden');
       });
+      window.addEventListener('hashchange', () => loadSection(getCurrentSection()));
+      loadSection(getCurrentSection());
+    }
+
+    function getCurrentSection() {
+      const requested = window.location.hash.replace('#', '');
+      return sectionIds.includes(requested) ? requested : 'dashboard';
+    }
+
+    function setActiveNav(section) {
+      document.querySelectorAll('nav a').forEach(link => {
+        const isActive = link.getAttribute('href') === `#${section}`;
+        link.classList.toggle('bg-slate-50', isActive);
+        link.classList.toggle('text-slate-900', isActive);
+        link.classList.toggle('shadow-sm', isActive);
+        link.classList.toggle('dark:bg-slate-900', isActive);
+        link.classList.toggle('dark:text-slate-100', isActive);
+      });
+    }
+
+    async function loadSection(section) {
+      const content = document.getElementById('mainContent');
+      if (!content) return;
+      content.innerHTML = `
+        <div class="rounded-[1.5rem] border border-slate-200 bg-white p-8 text-center shadow-panel dark:border-slate-800 dark:bg-slate-900">
+          <p class="text-sm text-slate-500 dark:text-slate-400">Cargando sección...</p>
+        </div>
+      `;
+      try {
+        const response = await fetch(`sections/${section}.html`);
+        if (!response.ok) throw new Error('No se pudo cargar la sección');
+        const html = await response.text();
+        content.innerHTML = html;
+        refreshDomNodes();
+        renderAll();
+        setActiveNav(section);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (error) {
+        content.innerHTML = `<div class="rounded-[1.5rem] border border-rose-200 bg-rose-50 p-8 text-center text-rose-700">Error al cargar la sección.</div>`;
+      }
     }
 
     function loadTheme() {
@@ -412,6 +299,10 @@
       dom.themeLabel.textContent = state.darkMode ? 'Modo claro' : 'Modo oscuro';
     }
 
+    function hasLoadedSection() {
+      return dom.usersTable || dom.agentsList || dom.skillsGrid || dom.contractsTable || dom.errorsTable;
+    }
+
     function handleGlobalClick(event) {
       const dropdownButton = event.target.closest('[data-dropdown-id]');
       if (dropdownButton) {
@@ -422,7 +313,7 @@
       }
       if (!event.target.closest('.dropdown-root')) {
         state.activeDropdown = null;
-        renderAll();
+        if (hasLoadedSection()) renderAll();
       }
     }
 
@@ -430,12 +321,13 @@
       if (event.key === 'Escape') {
         state.activeDropdown = null;
         if (state.modal) closeModal();
+        if (hasLoadedSection()) renderAll();
       }
     }
 
     function toggleDropdown(id) {
       state.activeDropdown = state.activeDropdown === id ? null : id;
-      renderAll();
+      if (hasLoadedSection()) renderAll();
     }
 
     function openModal(type, payload = {}) {
@@ -522,14 +414,15 @@
     }
 
     function renderAll() {
-      renderUsers();
-      renderAgents();
-      renderSkills();
-      renderContracts();
-      renderErrors();
+      if (dom.usersTable) renderUsers();
+      if (dom.agentsList) renderAgents();
+      if (dom.skillsGrid) renderSkills();
+      if (dom.contractsTable) renderContracts();
+      if (dom.errorsTable) renderErrors();
     }
 
     function renderUsers() {
+      if (!dom.usersTable) return;
       dom.usersTable.innerHTML = state.users.map(user => `
         <tr class="hover:bg-slate-50 dark:hover:bg-slate-950">
           <td class="px-6 py-4 font-semibold text-slate-900 dark:text-slate-100">${user.name}</td>
@@ -555,6 +448,7 @@
     }
 
     function renderAgents() {
+      if (!dom.agentsList) return;
       dom.agentsList.innerHTML = state.agents.map(agent => {
         const expanded = state.expandAgentIds.has(agent.id);
         const badge = agent.status === 'Activo' ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-300' : agent.status === 'Fallando' ? 'bg-rose-50 text-rose-700 dark:bg-rose-900/20 dark:text-rose-300' : 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300';
@@ -606,6 +500,7 @@
     }
 
     function renderSkills() {
+      if (!dom.skillsGrid) return;
       dom.skillsGrid.innerHTML = state.skills.map(skill => `
         <article class="rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-panel dark:border-slate-800 dark:bg-slate-900">
           <div class="flex items-start justify-between gap-3">
@@ -634,6 +529,7 @@
     }
 
     function renderContracts() {
+      if (!dom.contractsTable) return;
       dom.contractsTable.innerHTML = state.contracts.map(contract => `
         <tr class="hover:bg-slate-50 dark:hover:bg-slate-950">
           <td class="px-6 py-4 font-semibold text-slate-900 dark:text-slate-100">${contract.client}</td>
@@ -659,6 +555,7 @@
     }
 
     function renderErrors() {
+      if (!dom.errorsTable) return;
       dom.errorsTable.innerHTML = state.errors.map(error => `
         <tr class="hover:bg-slate-50 dark:hover:bg-slate-950">
           <td class="px-6 py-4 text-slate-600 dark:text-slate-300">${error.time}</td>
@@ -683,32 +580,32 @@
       } else {
         state.expandAgentIds.add(agentId);
       }
-      renderAgents();
+      if (hasLoadedSection()) renderAll();
     }
 
     function deleteUser(userId) {
       state.users = state.users.filter(user => user.id !== userId);
       state.activeDropdown = null;
-      renderUsers();
+      if (hasLoadedSection()) renderAll();
     }
 
     function deleteAgent(agentId) {
       state.agents = state.agents.filter(agent => agent.id !== agentId);
       state.expandAgentIds.delete(agentId);
       state.activeDropdown = null;
-      renderAgents();
+      if (hasLoadedSection()) renderAll();
     }
 
     function deleteSkill(skillId) {
       state.skills = state.skills.filter(skill => skill.id !== skillId);
       state.activeDropdown = null;
-      renderSkills();
+      if (hasLoadedSection()) renderAll();
     }
 
     function markErrorResolved(errorId) {
       state.errors = state.errors.map(error => error.id === errorId ? { ...error, resolved: true, message: error.message + ' (marcado como resuelto)' } : error);
       state.activeDropdown = null;
-      renderErrors();
+      if (hasLoadedSection()) renderAll();
     }
 
     window.openModal = openModal;
