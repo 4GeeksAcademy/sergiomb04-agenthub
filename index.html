@@ -18,10 +18,6 @@
             sans: ['Inter', 'sans-serif'],
             display: ['Plus Jakarta Sans', 'sans-serif'],
           },
-          boxShadow: {
-            panel: '0 12px 40px rgba(15, 23, 42, 0.08)',
-            soft: '0 10px 24px rgba(15, 23, 42, 0.06)',
-          },
           colors: {
             surface: '#f5f7fb',
             panel: '#ffffff',
@@ -42,7 +38,19 @@
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
       vertical-align: middle;
     }
-    .sidebar-pill::before {
+    .nav-link {
+      position: relative;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .nav-link.active {
+      background-color: rgba(67, 56, 202, 0.12);
+      color: #111827 !important;
+    }
+    .dark .nav-link.active {
+      background-color: rgba(67, 56, 202, 0.18);
+      color: #f8fafc !important;
+    }
+    .nav-link.active::before {
       content: '';
       position: absolute;
       left: 0;
@@ -52,9 +60,13 @@
       border-radius: 0 9999px 9999px 0;
       background: #4338ca;
     }
+    .nav-link.active .material-symbols-outlined {
+      color: #4338ca !important;
+    }
     .dropdown-root > div {
       overflow: hidden;
       border-radius: 1rem;
+      background-clip: padding-box;
     }
     .dropdown-root > button:focus-visible {
       outline: 2px solid rgba(67, 56, 202, 0.35);
@@ -78,24 +90,23 @@
         </div>
       </div>
       <nav class="p-6 space-y-1 text-sm font-medium">
-        <a href="#dashboard" class="group relative flex items-center gap-3 px-4 py-3 rounded-2xl bg-slate-50 text-slate-900 shadow-sm dark:bg-slate-900 dark:text-slate-100">
-          <span class="sidebar-pill"></span>
-          <span class="material-symbols-outlined text-slate-500 group-hover:text-brand">dashboard</span>
+        <a href="#dashboard" class="nav-link group relative flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
+          <span class="material-symbols-outlined">dashboard</span>
           Dashboard
         </a>
-        <a href="#users" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
+        <a href="#users" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
           <span class="material-symbols-outlined">group</span>Usuarios
         </a>
-        <a href="#agents" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
+        <a href="#agents" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
           <span class="material-symbols-outlined">smart_toy</span>Agentes
         </a>
-        <a href="#skills" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
+        <a href="#skills" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
           <span class="material-symbols-outlined">psychology</span>Skills
         </a>
-        <a href="#contracts" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
+        <a href="#contracts" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
           <span class="material-symbols-outlined">description</span>Contratos
         </a>
-        <a href="#errors" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
+        <a href="#errors" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
           <span class="material-symbols-outlined">bug_report</span>Errores
         </a>
       </nav>
@@ -248,13 +259,9 @@
     }
 
     function setActiveNav(section) {
-      document.querySelectorAll('nav a').forEach(link => {
+      document.querySelectorAll('nav a.nav-link').forEach(link => {
         const isActive = link.getAttribute('href') === `#${section}`;
-        link.classList.toggle('bg-slate-50', isActive);
-        link.classList.toggle('text-slate-900', isActive);
-        link.classList.toggle('shadow-sm', isActive);
-        link.classList.toggle('dark:bg-slate-900', isActive);
-        link.classList.toggle('dark:text-slate-100', isActive);
+        link.classList.toggle('active', isActive);
       });
     }
 
@@ -486,7 +493,7 @@
                 </div>
               </div>
             </div>
-            <div class="mt-5 overflow-hidden rounded-[1.25rem] border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/60 ${expanded ? 'max-h-[500px]' : 'max-h-0'} transition-all duration-300">
+            <div class="${expanded ? 'block' : 'hidden'} mt-5 overflow-hidden rounded-[1.25rem] border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
               <div class="space-y-3 ${expanded ? 'opacity-100 pt-2' : 'opacity-0'} transition-all duration-300">
                 <p class="text-sm text-slate-600 dark:text-slate-300">Skills asignadas</p>
                 <div class="flex flex-wrap gap-2">
