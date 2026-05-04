@@ -16,6 +16,42 @@ El equipo ya cuenta con un backend funcional, pero necesita definir y diseñar s
     - Modal
     - Badges
     - etc.
+- Gestión básica de estado para dropdowns y modales (sin inconsistencias)
+- Cierre de dropdowns al hacer clic fuera y con ESC
+- Solo un dropdown abierto a la vez (comportamiento consistente)
+
+- Accesibilidad básica:
+    - Navegación por teclado (tab, enter, esc)
+    - Uso de atributos ARIA esenciales en modales y dropdowns
+
+- Consistencia en UI:
+    - Acciones de dropdown homogéneas (Ver detalle, Eliminar, etc.)
+    - Naming consistente (sin mezclar idiomas)
+    - Transiciones simples pero consistentes
+
+- JavaScript limpio:
+    - Funciones reutilizables básicas
+    - Sin duplicación evidente de código
+    - Sin errores en consola
+
+- Datos:
+    - Renderizado desde arrays/objetos JS (no todo hardcodeado en HTML)
+    - Datos consistentes entre secciones
+    - IDs únicos por elemento
+
+- UI/UX:
+    - Estados hover y focus visibles
+    - Feedback visual en elementos interactivos
+    - Empty states básicos
+    - Scroll funcional en tablas
+
+- Modo oscuro:
+    - Aplicado globalmente (incluye modales y dropdowns)
+    - Persistencia simple (ej. localStorage opcional)
+
+- Edge cases básicos:
+    - UI no se rompe con múltiples clics rápidos
+    - No quedan modales/dropdowns abiertos al cambiar de sección
 
 
 ## Panel: Secciones
