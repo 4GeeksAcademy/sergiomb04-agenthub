@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#d5e3fc",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#c8c4d5",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#464553",
+                    "surface-container": "#eceef0",
+                    "primary-fixed": "#e2dfff",
+                    "on-tertiary-container": "#a7afc8",
+                    "surface": "#f7f9fb",
+                    "secondary-fixed-dim": "#b9c7df",
+                    "on-surface": "#191c1e",
+                    "tertiary": "#242c40",
+                    "on-primary-fixed": "#0f0069",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#3a485b",
+                    "on-secondary-container": "#57657a",
+                    "inverse-primary": "#c3c0ff",
+                    "surface-bright": "#f7f9fb",
+                    "on-primary-container": "#a9a7ff",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "inverse-surface": "#2d3133",
+                    "on-secondary-fixed": "#0d1c2e",
+                    "on-primary-fixed-variant": "#3b35a7",
+                    "tertiary-fixed-dim": "#bec6e0",
+                    "tertiary-fixed": "#dae2fd",
+                    "primary-container": "#3730a3",
+                    "inverse-on-surface": "#eff1f3",
+                    "primary": "#1f108e",
+                    "on-background": "#191c1e",
+                    "on-primary": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "outline": "#777584",
+                    "background": "#f7f9fb",
+                    "surface-tint": "#544fc0",
+                    "on-tertiary-fixed": "#131b2e",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#3f465c",
+                    "secondary": "#515f74",
+                    "surface-container-low": "#f2f4f6",
+                    "tertiary-container": "#3b4257",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary-container": "#d5e3fc",
+                    "surface-variant": "#e0e3e5",
+                    "surface-dim": "#d8dadc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "16px",
+                    "margin": "32px",
+                    "md": "24px",
+                    "xs": "8px",
+                    "lg": "32px",
+                    "gutter": "24px",
+                    "max_width": "1440px",
+                    "xl": "48px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-xl": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "code-sm": ["monospace"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-sm": ["Inter"],
+                    "title-sm": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "code-sm": ["13px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "title-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #f7f9fb;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background antialiased">
+<!-- Sidebar Navigation -->
+<aside class="fixed inset-y-0 left-0 z-50 flex flex-col w-64 h-screen border-r border-slate-200 bg-white font-plus-jakarta-sans text-sm font-medium">
+<div class="px-lg py-md flex items-center gap-xs">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm">smart_toy</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-slate-900 leading-none">AgentHub</h1>
+<p class="text-[10px] text-slate-500 font-semibold tracking-wider uppercase">Intelligence Platform</p>
+</div>
+</div>
+<nav class="flex-1 mt-md px-sm">
+<ul class="space-y-base">
+<li><a class="flex items-center gap-sm px-md py-sm rounded-lg text-slate-600 hover:bg-slate-50 transition-colors" href="#"><span class="material-symbols-outlined">dashboard</span>Dashboard</a></li>
+<li><a class="flex items-center gap-sm px-md py-sm rounded-lg text-slate-600 hover:bg-slate-50 transition-colors" href="#"><span class="material-symbols-outlined">group</span>Users</a></li>
+<li><a class="flex items-center gap-sm px-md py-sm rounded-lg text-slate-600 hover:bg-slate-50 transition-colors" href="#"><span class="material-symbols-outlined">smart_toy</span>Agents</a></li>
+<li><a class="flex items-center gap-sm px-md py-sm rounded-lg text-slate-600 hover:bg-slate-50 transition-colors" href="#"><span class="material-symbols-outlined">psychology</span>Skills</a></li>
+<li><a class="flex items-center gap-sm px-md py-sm rounded-lg text-slate-600 hover:bg-slate-50 transition-colors" href="#"><span class="material-symbols-outlined">description</span>Contracts</a></li>
+<li><a class="flex items-center gap-sm px-md py-sm rounded-lg text-indigo-800 border-l-4 border-indigo-800 bg-indigo-50/50" href="#"><span class="material-symbols-outlined">terminal</span>Logs</a></li>
+</ul>
+</nav>
+<div class="mt-auto px-sm pb-md">
+<button class="w-full flex items-center justify-center gap-xs bg-indigo-800 text-white px-md py-sm rounded-lg font-bold hover:bg-indigo-900 transition-colors mb-md shadow-sm">
+<span class="material-symbols-outlined text-sm">add</span>
+                New Agent
+            </button>
+<ul class="space-y-base">
+<li><a class="flex items-center gap-sm px-md py-sm rounded-lg text-slate-600 hover:bg-slate-50 transition-colors" href="#"><span class="material-symbols-outlined">settings</span>Settings</a></li>
+<li><a class="flex items-center gap-sm px-md py-sm rounded-lg text-slate-600 hover:bg-slate-50 transition-colors" href="#"><span class="material-symbols-outlined">help_outline</span>Support</a></li>
+</ul>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="sticky top-0 right-0 z-40 flex items-center justify-between px-lg h-16 w-full border-b border-slate-200 bg-white/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-md flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 border-none rounded-lg text-sm focus:ring-2 focus:ring-indigo-600/20" placeholder="Search system logs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="relative p-2 text-slate-500 hover:text-indigo-600 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+</button>
+<button class="p-2 text-slate-500 hover:text-indigo-600 transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-8 w-px bg-slate-200 mx-xs"></div>
+<div class="flex items-center gap-sm">
+<img alt="User profile" class="h-8 w-8 rounded-full object-cover border border-slate-200" data-alt="A close-up professional headshot of a software engineer with a friendly expression. The background is a clean, out-of-focus modern office space with soft daylight filtering through large windows. The overall lighting is bright and high-key, conveying a sense of transparency and modern professionalism consistent with a light-mode enterprise dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBILg19qqEHP1D6RqKJxHGQdOy2Ss-_jFkkMIdVnxPji6TLKI-qVuOIizHGosKz9A6UEyWMHALQmw_UhO08lRm8KC6Jc02LUdGbAkj2MTUc79LAOpgUwE9UgA3zNteKIGFtSt_WxNLStoEK6ozIyYkWkNdpFmcXRgwv2_sB2iQb7FDPqmL8Ln6V16qxnayB6xVP5awAULIIfl-bOsRd1NGxnxCqmauVM2cHEv5Tfr9-3qpiyJafMUBJTLsy-6LL4fkhWbRSFDfn_W4"/>
+<span class="font-title-sm text-sm text-slate-900">Alex Chen</span>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-margin flex-1">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+<div>
+<h2 class="font-headline-lg text-slate-900">System Error Logs</h2>
+<p class="text-slate-500 mt-xs">Real-time monitoring and diagnostic data for all active agents.</p>
+</div>
+<div class="flex gap-sm">
+<button class="px-md py-sm bg-white border border-slate-200 rounded-lg text-slate-600 font-semibold text-sm hover:bg-slate-50 flex items-center gap-xs">
+<span class="material-symbols-outlined text-md">filter_list</span>
+                        Filters
+                    </button>
+<button class="px-md py-sm bg-white border border-slate-200 rounded-lg text-slate-600 font-semibold text-sm hover:bg-slate-50 flex items-center gap-xs">
+<span class="material-symbols-outlined text-md">download</span>
+                        Export CSV
+                    </button>
+</div>
+</div>
+<!-- Bento Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-xl">
+<div class="bg-white p-md rounded-xl border border-slate-200 shadow-sm">
+<div class="flex items-center justify-between mb-sm">
+<span class="text-slate-500 font-label-md">CRITICAL ERRORS</span>
+<span class="material-symbols-outlined text-rose-500">error</span>
+</div>
+<div class="text-headline-md text-slate-900">12</div>
+<div class="text-xs text-rose-600 mt-xs font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                        +4 from last hour
+                    </div>
+</div>
+<div class="bg-white p-md rounded-xl border border-slate-200 shadow-sm">
+<div class="flex items-center justify-between mb-sm">
+<span class="text-slate-500 font-label-md">AVG RECOVERY TIME</span>
+<span class="material-symbols-outlined text-indigo-500">timer</span>
+</div>
+<div class="text-headline-md text-slate-900">4.2m</div>
+<div class="text-xs text-emerald-600 mt-xs font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_down</span>
+                        -12% efficiency gain
+                    </div>
+</div>
+<div class="bg-white p-md rounded-xl border border-slate-200 shadow-sm">
+<div class="flex items-center justify-between mb-sm">
+<span class="text-slate-500 font-label-md">ACTIVE AGENTS</span>
+<span class="material-symbols-outlined text-blue-500">bolt</span>
+</div>
+<div class="text-headline-md text-slate-900">1,204</div>
+<div class="text-xs text-slate-400 mt-xs font-semibold">98.4% uptime</div>
+</div>
+<div class="bg-white p-md rounded-xl border border-slate-200 shadow-sm">
+<div class="flex items-center justify-between mb-sm">
+<span class="text-slate-500 font-label-md">RESOLVED TODAY</span>
+<span class="material-symbols-outlined text-emerald-500">check_circle</span>
+</div>
+<div class="text-headline-md text-slate-900">84</div>
+<div class="text-xs text-emerald-600 mt-xs font-semibold">92% auto-fix rate</div>
+</div>
+</div>
+<!-- Main Data Table Container -->
+<div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+<div class="px-lg py-md border-b border-slate-200 flex items-center justify-between bg-slate-50">
+<h3 class="font-title-sm text-slate-900">Activity Stream</h3>
+<div class="flex items-center gap-sm">
+<div class="flex items-center bg-white border border-slate-200 rounded-lg p-1">
+<button class="px-sm py-1 text-xs font-bold bg-indigo-50 text-indigo-800 rounded-md">All Logs</button>
+<button class="px-sm py-1 text-xs font-bold text-slate-500 hover:text-slate-700">Unresolved</button>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-slate-50 border-b border-slate-200">
+<tr>
+<th class="px-lg py-md text-xs font-label-md text-slate-500 uppercase tracking-wider">Timestamp</th>
+<th class="px-lg py-md text-xs font-label-md text-slate-500 uppercase tracking-wider">Agent Name</th>
+<th class="px-lg py-md text-xs font-label-md text-slate-500 uppercase tracking-wider">Error Type</th>
+<th class="px-lg py-md text-xs font-label-md text-slate-500 uppercase tracking-wider">Brief Description</th>
+<th class="px-lg py-md text-xs font-label-md text-slate-500 uppercase tracking-wider">Severity</th>
+<th class="px-lg py-md text-xs font-label-md text-slate-500 uppercase tracking-wider">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<!-- Row 1 -->
+<tr class="group hover:bg-indigo-50/30 transition-colors">
+<td class="px-lg py-md font-code-sm text-slate-500">2023-10-24 14:22:01</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+<span class="font-semibold text-slate-900">Alpha-One</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-100 text-rose-800">
+                                        API_TIMEOUT
+                                    </span>
+</td>
+<td class="px-lg py-md text-slate-600 max-w-xs truncate">Connection lost to primary weather data endpoint.</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-1 text-rose-600 font-bold text-xs">
+<span class="material-symbols-outlined text-sm">priority_high</span>
+                                        CRITICAL
+                                    </div>
+</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-indigo-600 hover:bg-indigo-100 rounded-lg" title="View Detail">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 text-emerald-600 hover:bg-emerald-100 rounded-lg" title="Mark as Resolved">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-indigo-50/30 transition-colors">
+<td class="px-lg py-md font-code-sm text-slate-500">2023-10-24 14:18:45</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-amber-500"></div>
+<span class="font-semibold text-slate-900">DataCruncher_v4</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800">
+                                        MEMORY_PEAK
+                                    </span>
+</td>
+<td class="px-lg py-md text-slate-600 max-w-xs truncate">Heuristic analysis exceeded 85% available heap memory.</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-1 text-amber-600 font-bold text-xs">
+<span class="material-symbols-outlined text-sm">warning</span>
+                                        WARNING
+                                    </div>
+</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-indigo-600 hover:bg-indigo-100 rounded-lg">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 text-emerald-600 hover:bg-emerald-100 rounded-lg">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-indigo-50/30 transition-colors">
+<td class="px-lg py-md font-code-sm text-slate-500">2023-10-24 14:12:12</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+<span class="font-semibold text-slate-900">SupportBot_2</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800">
+                                        AUTH_RETRY
+                                    </span>
+</td>
+<td class="px-lg py-md text-slate-600 max-w-xs truncate">User token expired. Automatic refresh successful.</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-1 text-blue-600 font-bold text-xs">
+<span class="material-symbols-outlined text-sm">info</span>
+                                        INFO
+                                    </div>
+</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-indigo-600 hover:bg-indigo-100 rounded-lg">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 text-emerald-600 hover:bg-emerald-100 rounded-lg">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-indigo-50/30 transition-colors">
+<td class="px-lg py-md font-code-sm text-slate-500">2023-10-24 13:58:04</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+<span class="font-semibold text-slate-900">Crawler_Main</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-100 text-rose-800">
+                                        DB_LOCK
+                                    </span>
+</td>
+<td class="px-lg py-md text-slate-600 max-w-xs truncate">Failed to write crawl results: record deadlock detected.</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-1 text-rose-600 font-bold text-xs">
+<span class="material-symbols-outlined text-sm">priority_high</span>
+                                        CRITICAL
+                                    </div>
+</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-indigo-600 hover:bg-indigo-100 rounded-lg">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 text-emerald-600 hover:bg-emerald-100 rounded-lg">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-lg py-md border-t border-slate-200 bg-slate-50 flex items-center justify-between">
+<span class="text-xs text-slate-500">Showing 1 to 4 of 248 errors</span>
+<div class="flex gap-xs">
+<button class="p-1 border border-slate-200 rounded text-slate-400 hover:bg-white"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="px-3 py-1 bg-white border border-indigo-200 text-indigo-800 font-bold text-xs rounded">1</button>
+<button class="px-3 py-1 text-slate-500 font-bold text-xs hover:bg-white rounded">2</button>
+<button class="px-3 py-1 text-slate-500 font-bold text-xs hover:bg-white rounded">3</button>
+<button class="p-1 border border-slate-200 rounded text-slate-400 hover:bg-white"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+</div>
+<!-- Full Trace Modal (Simulated Visibility) -->
+<div class="fixed inset-0 z-[60] flex items-center justify-center pointer-events-none opacity-0 transition-opacity">
+<!-- This would be toggled via JS; here for UI demonstration -->
+<div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"></div>
+<div class="relative bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden border border-slate-200">
+<div class="px-lg py-md border-b border-slate-200 flex items-center justify-between">
+<h4 class="font-headline-md text-slate-900">Error Detail: API_TIMEOUT</h4>
+<button class="p-2 text-slate-400 hover:text-slate-600"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="p-lg space-y-md">
+<div class="grid grid-cols-2 gap-md">
+<div>
+<p class="text-xs font-label-md text-slate-500 mb-base">AGENT ID</p>
+<p class="font-semibold text-slate-900">alpha-one-prod-009</p>
+</div>
+<div>
+<p class="text-xs font-label-md text-slate-500 mb-base">SEVERITY</p>
+<p class="font-semibold text-rose-600 flex items-center gap-1"><span class="material-symbols-outlined text-sm">priority_high</span>CRITICAL</p>
+</div>
+</div>
+<div>
+<p class="text-xs font-label-md text-slate-500 mb-base">STACK TRACE</p>
+<div class="bg-slate-900 rounded-lg p-md font-code-sm text-indigo-300 overflow-x-auto">
+<pre>Error: Connection timed out after 5000ms
+  at Request.handleTimeout (/app/node_modules/request/lib/timeout.js:24:12)
+  at emitNone (events.js:106:13)
+  at Request.emit (events.js:208:7)
+  at Timeout.&lt;anonymous&gt; (/app/services/weather.js:452:19)</pre>
+</div>
+</div>
+</div>
+<div class="px-lg py-md border-t border-slate-200 flex justify-end gap-sm bg-slate-50">
+<button class="px-md py-sm text-slate-600 font-semibold text-sm hover:text-slate-900">Download Logs</button>
+<button class="px-md py-sm bg-indigo-800 text-white rounded-lg font-bold text-sm">Mark as Resolved</button>
+</div>
+</div>
+</div>
+<!-- Visualization Section -->
+<div class="mt-xl grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-white p-lg rounded-xl border border-slate-200 shadow-sm">
+<h4 class="font-title-sm text-slate-900 mb-md">Error Distribution by Type</h4>
+<div class="space-y-sm">
+<div class="flex items-center gap-md">
+<span class="w-24 text-xs font-semibold text-slate-500">API Timeout</span>
+<div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-rose-500 w-[65%]"></div>
+</div>
+<span class="w-8 text-xs font-bold text-slate-900">65%</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="w-24 text-xs font-semibold text-slate-500">Auth Fail</span>
+<div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-amber-500 w-[20%]"></div>
+</div>
+<span class="w-8 text-xs font-bold text-slate-900">20%</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="w-24 text-xs font-semibold text-slate-500">DB Lock</span>
+<div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-indigo-500 w-[10%]"></div>
+</div>
+<span class="w-8 text-xs font-bold text-slate-900">10%</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="w-24 text-xs font-semibold text-slate-500">Memory</span>
+<div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-slate-300 w-[5%]"></div>
+</div>
+<span class="w-8 text-xs font-bold text-slate-900">5%</span>
+</div>
+</div>
+</div>
+<div class="relative bg-indigo-900 rounded-xl overflow-hidden shadow-sm flex items-center justify-center">
+<img class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-30" data-alt="A detailed digital visualization of data streams and network connectivity in a dark, sophisticated blue and indigo color scheme. Glowing lines and nodes represent information flow, creating an atmosphere of complex technological intelligence and oversight. The overall visual style is clean, technical, and high-end, perfectly complementing a professional enterprise dashboard's monitoring capabilities." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaqzrl3uLq51Z7Mc0i4TD1Y9fmk0CF1swhtlNmX5K6V63I6k_ji-YAIYZrnn1cPHROZP87QrubsvPUfp03ZpAbK_bI9Mz-IsLWKVMotJxGFrJay8XAgs2madJtC40qEb6RtWS8Mn79ojnQrQEAK8TStwfZZcoPSON62z3pD3bjP3dThYjH_8S_InzcOSC2YJ8vkI9EsBPLC3GkVl7hG87Rr-PPjbYqm67zGWKmJ4JJgmEX7POF_8OSwyQkM7T7j7TzCveGiuasHfY"/>
+<div class="relative z-10 p-lg text-center">
+<h4 class="text-white font-headline-md mb-xs">Advanced Diagnostics</h4>
+<p class="text-indigo-200 text-sm mb-md">Our AI system has detected patterns suggesting a downstream provider outage.</p>
+<button class="px-md py-sm bg-white text-indigo-900 rounded-lg font-bold text-sm hover:bg-indigo-50 transition-colors">Generate System Report</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
