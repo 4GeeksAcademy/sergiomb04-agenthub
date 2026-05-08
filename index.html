@@ -48,23 +48,23 @@
         </div>
       </div>
       <nav class="p-6 space-y-1 text-sm font-medium">
-        <a href="#dashboard" class="nav-link group relative flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
+        <a href="#dashboard" class="nav-link group relative flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 transition-colors duration-200 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
           <span class="material-symbols-outlined">dashboard</span>
           Dashboard
         </a>
-        <a href="#users" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
+        <a href="#users" class="nav-link relative flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 transition-colors duration-200 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
           <span class="material-symbols-outlined">group</span>Usuarios
         </a>
-        <a href="#agents" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
+        <a href="#agents" class="nav-link relative flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 transition-colors duration-200 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
           <span class="material-symbols-outlined">smart_toy</span>Agentes
         </a>
-        <a href="#skills" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
+        <a href="#skills" class="nav-link relative flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 transition-colors duration-200 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
           <span class="material-symbols-outlined">psychology</span>Skills
         </a>
-        <a href="#contracts" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
+        <a href="#contracts" class="nav-link relative flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 transition-colors duration-200 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
           <span class="material-symbols-outlined">description</span>Contratos
         </a>
-        <a href="#errors" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
+        <a href="#errors" class="nav-link relative flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 transition-colors duration-200 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-slate-100">
           <span class="material-symbols-outlined">bug_report</span>Errores
         </a>
       </nav>
@@ -108,8 +108,8 @@
     </div>
   </div>
 
-  <div id="modalRoot" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-slate-950/60 p-4 backdrop-blur-sm" aria-hidden="true" onclick="closeModal()">
-    <div id="modalPanel" class="relative w-full max-w-3xl overflow-hidden rounded-[1.5rem] bg-white shadow-panel dark:bg-slate-900" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1" onclick="event.stopPropagation()">
+  <div id="modalRoot" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-slate-950/60 p-4 opacity-0 backdrop-blur-sm transition-opacity duration-[250ms]" aria-hidden="true" onclick="closeModal()">
+    <div id="modalPanel" class="relative w-full max-w-3xl translate-y-3 scale-[0.98] overflow-hidden rounded-[1.5rem] bg-white opacity-0 shadow-panel transition-[transform,opacity] duration-[250ms] dark:bg-slate-900" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1" onclick="event.stopPropagation()">
       <div class="flex items-start justify-between border-b border-slate-200 p-6 dark:border-slate-800">
         <div>
           <p id="modalSubtitle" class="text-xs uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Detalle</p>
@@ -446,12 +446,12 @@
           <td class="px-6 py-4 text-slate-600 dark:text-slate-300">${user.status}</td>
           <td class="px-6 py-4">
             <div class="relative dropdown-root">
-              <button data-dropdown-id="user-${user.id}" class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-800" aria-expanded="${state.activeDropdown === `user-${user.id}`}" aria-haspopup="true">
+              <button data-dropdown-id="user-${user.id}" class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[rgba(67,56,202,0.35)] dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-800" aria-expanded="${state.activeDropdown === `user-${user.id}`}" aria-haspopup="true">
                 Acciones
                 <span class="material-symbols-outlined">expand_more</span>
               </button>
               ${state.activeDropdown === `user-${user.id}` ? `
-                <div class="absolute right-0 z-20 mt-2 w-44 rounded-3xl border border-slate-200 bg-white shadow-soft dark:border-slate-800 dark:bg-slate-950">
+                <div class="absolute right-0 z-20 mt-2 w-44 origin-top-right -translate-y-2 scale-[0.98] overflow-hidden rounded-3xl border border-slate-200 bg-white bg-clip-padding opacity-0 shadow-soft animate-[dropdown-open_180ms_ease-out_forwards] dark:border-slate-800 dark:bg-slate-950">
                   <button class="block w-full px-4 py-3 text-left text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" onclick='openModal("user", ${JSON.stringify(user)})'>Ver detalles</button>
                   <button class="block w-full px-4 py-3 text-left text-sm text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/50" onclick="deleteUser('${user.id}')">Eliminar</button>
                 </div>
@@ -488,12 +488,12 @@
                   ${expanded ? 'Ocultar skills' : 'Ver skills'}
                 </button>
                 <div class="relative dropdown-root">
-                  <button data-dropdown-id="agent-${agent.id}" class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-800" aria-expanded="${state.activeDropdown === `agent-${agent.id}`}" aria-haspopup="true">
+                  <button data-dropdown-id="agent-${agent.id}" class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[rgba(67,56,202,0.35)] dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-800" aria-expanded="${state.activeDropdown === `agent-${agent.id}`}" aria-haspopup="true">
                     Acción
                     <span class="material-symbols-outlined">expand_more</span>
                   </button>
                   ${state.activeDropdown === `agent-${agent.id}` ? `
-                    <div class="absolute right-0 z-20 mt-2 w-44 rounded-3xl border border-slate-200 bg-white shadow-soft dark:border-slate-800 dark:bg-slate-950">
+                    <div class="absolute right-0 z-20 mt-2 w-44 origin-top-right -translate-y-2 scale-[0.98] overflow-hidden rounded-3xl border border-slate-200 bg-white bg-clip-padding opacity-0 shadow-soft animate-[dropdown-open_180ms_ease-out_forwards] dark:border-slate-800 dark:bg-slate-950">
                       <button class="block w-full px-4 py-3 text-left text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" onclick='openModal("agent", ${JSON.stringify(agent)})'>Ver detalles</button>
                       <button class="block w-full px-4 py-3 text-left text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" onclick='openModal("configure", ${JSON.stringify(agent)})'>Configurar</button>
                       <button class="block w-full px-4 py-3 text-left text-sm text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/50" onclick="deleteAgent('${agent.id}')">Eliminar</button>
@@ -525,11 +525,11 @@
               <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">${skill.description}</p>
             </div>
             <div class="relative dropdown-root">
-              <button data-dropdown-id="skill-${skill.id}" class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-800" aria-expanded="${state.activeDropdown === `skill-${skill.id}`}" aria-haspopup="true">
+              <button data-dropdown-id="skill-${skill.id}" class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[rgba(67,56,202,0.35)] dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-800" aria-expanded="${state.activeDropdown === `skill-${skill.id}`}" aria-haspopup="true">
                 <span class="material-symbols-outlined">more_horiz</span>
               </button>
               ${state.activeDropdown === `skill-${skill.id}` ? `
-                <div class="absolute right-0 z-20 mt-2 w-40 rounded-3xl border border-slate-200 bg-white shadow-soft dark:border-slate-800 dark:bg-slate-950">
+                <div class="absolute right-0 z-20 mt-2 w-40 origin-top-right -translate-y-2 scale-[0.98] overflow-hidden rounded-3xl border border-slate-200 bg-white bg-clip-padding opacity-0 shadow-soft animate-[dropdown-open_180ms_ease-out_forwards] dark:border-slate-800 dark:bg-slate-950">
                   <button class="block w-full px-4 py-3 text-left text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" onclick='openModal("skill", ${JSON.stringify(skill)})'>Ver detalles</button>
                   <button class="block w-full px-4 py-3 text-left text-sm text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/50" onclick="deleteSkill('${skill.id}')">Eliminar</button>
                 </div>
@@ -555,12 +555,12 @@
           <td class="px-6 py-4 text-slate-900 dark:text-slate-100">${contract.total}</td>
           <td class="px-6 py-4">
             <div class="relative dropdown-root">
-              <button data-dropdown-id="contract-${contract.id}" class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-800" aria-expanded="${state.activeDropdown === `contract-${contract.id}`}" aria-haspopup="true">
+              <button data-dropdown-id="contract-${contract.id}" class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[rgba(67,56,202,0.35)] dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-800" aria-expanded="${state.activeDropdown === `contract-${contract.id}`}" aria-haspopup="true">
                 Acciones
                 <span class="material-symbols-outlined">expand_more</span>
               </button>
               ${state.activeDropdown === `contract-${contract.id}` ? `
-                <div class="absolute right-0 z-20 mt-2 w-44 rounded-3xl border border-slate-200 bg-white shadow-soft dark:border-slate-800 dark:bg-slate-950">
+                <div class="absolute right-0 z-20 mt-2 w-44 origin-top-right -translate-y-2 scale-[0.98] overflow-hidden rounded-3xl border border-slate-200 bg-white bg-clip-padding opacity-0 shadow-soft animate-[dropdown-open_180ms_ease-out_forwards] dark:border-slate-800 dark:bg-slate-950">
                   <button class="block w-full px-4 py-3 text-left text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" onclick='openModal("contract", ${JSON.stringify(contract)})'>Ver detalles</button>
                 </div>
               ` : ''}
